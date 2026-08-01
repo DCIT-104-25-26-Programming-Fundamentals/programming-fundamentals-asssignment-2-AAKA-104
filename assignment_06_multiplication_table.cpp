@@ -55,5 +55,73 @@
 // =============================================================================
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
+// PART A: Print multiplication table for a single number
+void printTable(int num) {
+    cout << "Multiplication Table for " << num << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << num << "  x  " << setw(2) << i << "  =  " << num * i << endl;
+    }
+}
+
+// PART B: Print multiplication tables from 1 to N
+void printTablesUpToN(int n) {
+    if (n <= 0) {
+        cout << "Error: Number must be positive." << endl;
+        return;
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        printTable(i);
+        if (i < n) {
+            cout << "---------------------------" << endl;
+        }
+    }
+}
+
+int main() {
+    int choice;
+    
+    cout << "Multiplication Table Generator" << endl;
+    cout << "1. Print table for a single number" << endl;
+    cout << "2. Print tables from 1 to N" << endl;
+    cout << "Enter your choice (1-2): ";
+    cin >> choice;
+    
+    switch (choice) {
+        case 1: {
+            // PART A
+            int num;
+            cout << "Enter a number: ";
+            cin >> num;
+            cout << endl;
+            printTable(num);
+            break;
+        }
+        
+        case 2: {
+            // PART B
+            int n;
+            cout << "Enter a number N: ";
+            cin >> n;
+            
+            if (n <= 0) {
+                cout << "Error: Number must be positive." << endl;
+                return 1;
+            }
+            
+            cout << endl;
+            printTablesUpToN(n);
+            break;
+        }
+        
+        default:
+            cout << "Invalid choice. Please run the program again." << endl;
+            break;
+    }
+    
+    return 0;
+}
 
